@@ -30,11 +30,6 @@ from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-
-# Route qui sert index.html quand on visite l'URL racine
-@app.get("/")
-async def serve_index():
-    return FileResponse("index.html")
 from pydantic import BaseModel
 import aiohttp
 
@@ -161,7 +156,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# ✅ ICI — après app = FastAPI(...)
+@app.get("/")
+async def serve_index():
+    return FileResponse("index.html")
 # ================================================
 # MODÈLES
 # ================================================
