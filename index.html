@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>WatchEarn — Regarde & Gagne en USDT</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<!-- SDK Adsgram -->
-<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+<!-- SDK Monetag -->
+<script src='//libtl.com/sdk.js' data-zone='10890846' data-sdk='show_10890846'></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 :root {
@@ -40,10 +40,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .stat-card .val{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--usdt);line-height:1;margin-bottom:4px}
 .stat-card .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 
-/* =============================================
-   MODIFICATION 4 — 3 CARTES RÉSEAU
-   L'utilisateur choisit lui-même
-============================================= */
+/* CARTES RÉSEAU */
 .networks-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 .networks-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
 
@@ -66,15 +63,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 }
 .net-left{display:flex;align-items:center;gap:12px}
 .net-logo{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff}
-.net-logo.adsgram{background:linear-gradient(135deg,#F5C842,#C9970A)}
 .net-logo.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F)}
 .net-logo.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0)}
 .net-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px}
 .net-reward{font-size:12px;color:var(--usdt);margin-top:2px;font-weight:500}
 .net-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.net-limit-badge{
-  font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;
-}
+.net-limit-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;}
 .net-limit-badge.ok{background:rgba(46,204,113,0.15);color:var(--success)}
 .net-limit-badge.warn{background:rgba(245,200,66,0.15);color:var(--gold)}
 .net-limit-badge.full{background:rgba(231,76,60,0.15);color:var(--danger)}
@@ -84,7 +78,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .net-prog-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px}
 .net-prog-bar{background:var(--surface2);border-radius:10px;height:6px;overflow:hidden}
 .net-prog-fill{height:100%;border-radius:10px;transition:width .5s ease}
-.net-prog-fill.adsgram{background:linear-gradient(90deg,var(--gold),var(--gold-dark))}
 .net-prog-fill.monetag{background:linear-gradient(90deg,#FF6B35,#C44B1F)}
 .net-prog-fill.adsterra{background:linear-gradient(90deg,#2196F3,#1565C0)}
 
@@ -93,41 +86,35 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .player-section.visible{display:block}
 .player-screen{position:relative;background:#000;min-height:200px;display:flex;align-items:center;justify-content:center}
 .player-idle{display:flex;flex-direction:column;align-items:center;gap:12px;padding:40px 20px;width:100%}
-.play-btn{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;transition:.2s;border:none;color:#000}
+.play-btn{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;transition:.2s;border:none;color:#fff}
 .play-btn:active{transform:scale(.93)}
-.play-btn.adsgram{background:linear-gradient(135deg,var(--gold),var(--gold-dark));box-shadow:0 0 30px rgba(245,200,66,.3)}
 .play-btn.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F);box-shadow:0 0 30px rgba(255,107,53,.3)}
 .play-btn.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0);box-shadow:0 0 30px rgba(33,150,243,.3)}
 .idle-text{text-align:center}
 .idle-text h3{font-family:'Syne',sans-serif;font-size:15px;margin-bottom:4px}
 .idle-text p{font-size:12px;color:var(--muted)}
-.reward-badge{position:absolute;top:12px;right:12px;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;display:none}
-.reward-badge.adsgram{background:linear-gradient(135deg,var(--gold),var(--gold-dark))}
-.reward-badge.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F);color:#fff}
-.reward-badge.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0);color:#fff}
+.reward-badge{position:absolute;top:12px;right:12px;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;display:none}
+.reward-badge.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F)}
+.reward-badge.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0)}
 .ad-sim{display:none;width:100%;min-height:200px;background:#0d0d0d;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 .ad-sim-count{font-size:36px;font-family:'Syne',sans-serif}
-.ad-sim-count.adsgram{color:var(--gold)}
 .ad-sim-count.monetag{color:#FF6B35}
 .ad-sim-count.adsterra{color:#2196F3}
 .vprogress{height:3px;background:var(--surface2)}
 .vprogress-fill{height:100%;width:0%;transition:width .3s linear}
-.vprogress-fill.adsgram{background:linear-gradient(90deg,var(--gold),var(--gold-dark))}
 .vprogress-fill.monetag{background:linear-gradient(90deg,#FF6B35,#C44B1F)}
 .vprogress-fill.adsterra{background:linear-gradient(90deg,#2196F3,#1565C0)}
 .player-info{padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
 .ad-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 .timer-lbl{font-family:'Syne',sans-serif;font-size:13px;font-weight:600}
-.timer-lbl.adsgram{color:var(--gold)}
 .timer-lbl.monetag{color:#FF6B35}
 .timer-lbl.adsterra{color:#2196F3}
 
 /* BTN WATCH */
-.btn-watch{width:100%;padding:15px;border:none;border-radius:var(--radius);font-family:'Syne',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:.15s;margin-bottom:12px;position:relative;overflow:hidden;color:#000;display:none}
+.btn-watch{width:100%;padding:15px;border:none;border-radius:var(--radius);font-family:'Syne',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:.15s;margin-bottom:12px;position:relative;overflow:hidden;color:#fff;display:none}
 .btn-watch.visible{display:block}
-.btn-watch.adsgram{background:linear-gradient(135deg,var(--gold),var(--gold-dark));box-shadow:0 6px 24px rgba(245,200,66,.25)}
-.btn-watch.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F);color:#fff;box-shadow:0 6px 24px rgba(255,107,53,.25)}
-.btn-watch.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0);color:#fff;box-shadow:0 6px 24px rgba(33,150,243,.25)}
+.btn-watch.monetag{background:linear-gradient(135deg,#FF6B35,#C44B1F);box-shadow:0 6px 24px rgba(255,107,53,.25)}
+.btn-watch.adsterra{background:linear-gradient(135deg,#2196F3,#1565C0);box-shadow:0 6px 24px rgba(33,150,243,.25)}
 .btn-watch::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:shimmer 2.5s infinite}
 @keyframes shimmer{100%{left:100%}}
 .btn-watch:active{transform:scale(.98)}
@@ -198,7 +185,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
-<!-- RATE BAR : taux TON/USDT en temps réel -->
+<!-- RATE BAR -->
 <div class="rate-bar">
   <span>💱 Taux actuel</span>
   <span>1 TON = <span class="rate-val" id="ton-rate">3.50</span> USDT</span>
@@ -222,38 +209,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
   </div>
 
-  <!-- =============================================
-       MODIFICATION 4 — 3 CARTES RÉSEAU
-       L'utilisateur choisit librement
-  ============================================= -->
+  <!-- CARTES RÉSEAU -->
   <div class="networks-title">Choisis ton réseau pub</div>
   <div class="networks-grid">
-
-    <!-- ADSGRAM -->
-    <div class="network-card" id="card-adsgram" onclick="selectAndPlay('adsgram')">
-      <div class="net-header">
-        <div class="net-left">
-          <div class="net-logo adsgram">A</div>
-          <div>
-            <div class="net-name">Pubs 1</div>
-            <!-- MODIFICATION 3 : affiche récompense en USDT -->
-            <div class="net-reward" id="reward-adsgram">≈ 0.0035 USDT / vue</div>
-          </div>
-        </div>
-        <div class="net-right">
-          <span class="net-limit-badge ok" id="badge-adsgram">5 restantes</span>
-        </div>
-      </div>
-      <div class="net-progress">
-        <div class="net-prog-label">
-          <span>Vues aujourd'hui</span>
-          <span id="prog-label-adsgram">0 / 5</span>
-        </div>
-        <div class="net-prog-bar">
-          <div class="net-prog-fill adsgram" id="prog-adsgram" style="width:0%"></div>
-        </div>
-      </div>
-    </div>
 
     <!-- MONETAG -->
     <div class="network-card" id="card-monetag" onclick="selectAndPlay('monetag')">
@@ -261,7 +219,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="net-left">
           <div class="net-logo monetag">M</div>
           <div>
-            <div class="net-name">Pubs 2</div>
+            <div class="net-name">Pubs 1 — Monetag</div>
             <div class="net-reward" id="reward-monetag">≈ 0.0025 USDT / vue</div>
           </div>
         </div>
@@ -286,7 +244,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="net-left">
           <div class="net-logo adsterra">T</div>
           <div>
-            <div class="net-name">Pubs 3</div>
+            <div class="net-name">Pubs 2 — AdsTerra</div>
             <div class="net-reward" id="reward-adsterra">≈ 0.0018 USDT / vue</div>
           </div>
         </div>
@@ -307,7 +265,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
   </div>
 
-  <!-- PLAYER (s'affiche après sélection d'un réseau) -->
+  <!-- PLAYER -->
   <div class="player-section" id="player-section">
     <div class="player-screen" id="player-screen">
       <div class="player-idle" id="player-idle">
@@ -318,7 +276,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </div>
       </div>
       <div id="player-playing" style="display:none;width:100%;min-height:200px">
-        <div id="adsgram-container" style="width:100%;min-height:180px"></div>
+        <div id="ad-container" style="width:100%;min-height:180px"></div>
         <div class="ad-sim" id="ad-sim">
           <div style="font-size:36px">📺</div>
           <div style="font-size:12px;color:#666">Pub en cours — Ne ferme pas</div>
@@ -341,7 +299,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     ▶ Lancer la pub
   </button>
 
-  <!-- BTN CLAIM (USDT) -->
+  <!-- BTN CLAIM -->
   <button class="btn-claim" id="btn-claim" onclick="openModal()">
     💵 Retirer — <span id="claim-amount">0.0000</span> USDT
   </button>
@@ -364,20 +322,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <button class="nav-item" onclick="switchTab('stats',this)"><span class="icon">📊</span><span>Stats</span></button>
 </div>
 
-<!-- MODAL RETRAIT USDT -->
+<!-- MODAL RETRAIT -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOut(event)">
   <div class="modal">
     <h3>💵 Retirer en USDT</h3>
     <div class="modal-sub">Minimum : 1 USDT — Délai : 1 à 24h</div>
-
     <input class="modal-input" id="wallet-input" type="text"
       placeholder="Adresse USDT (TRC20: T... ou ERC20: 0x...)"/>
-
     <select class="network-select" id="withdraw-network">
       <option value="trc20">TRC20 (TRON) — Frais très bas</option>
       <option value="erc20">ERC20 (Ethereum) — Frais plus élevés</option>
     </select>
-
     <div class="modal-row">
       <div class="modal-line">
         <span class="lbl">Solde disponible</span>
@@ -392,7 +347,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <span class="val" id="modal-rate">—</span>
       </div>
     </div>
-
     <button class="btn-confirm" onclick="confirmWithdraw()">Retirer maintenant</button>
     <button class="btn-cancel" onclick="document.getElementById('modal-overlay').classList.remove('open')">Annuler</button>
   </div>
@@ -400,15 +354,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <script>
 // ============================================================
-// CONFIG — Remplace ces valeurs
+// CONFIG
 // ============================================================
 const CONFIG = {
-  BACKEND_URL: 'https://webapp-production-ed68.up.railway.app', // ton URL backend
-  BOT_NAME:    'YourBotName',
+  BACKEND_URL: 'https://webapp-production-ed68.up.railway.app',
+  BOT_NAME:    'TalePixelBot',
 
-  adsgram:  { blockId: 'YOUR_ADSGRAM_BLOCK_ID',  label: 'Adsgram'  },
-  monetag:  { zoneId:  'YOUR_MONETAG_ZONE_ID',   label: 'Monetag'  },
-  adsterra: { key:     'YOUR_ADSTERRA_KEY',       label: 'AdsTerra' }
+  monetag:  { zoneId: '3303861',   label: 'Monetag'  },
+  adsterra: { key:    '29078816',  label: 'AdsTerra',
+              smartlink: 'https://disintegratehesitate.com/q7t57d9qd2?key=db191948cd6d7f53dc78514001ffdc09' }
 };
 
 // ============================================================
@@ -432,33 +386,28 @@ let state = {
   cooldown:     0,
   walletAddress:'',
   selectedNet:  null,
-  // Compteurs journaliers par réseau
-  daily: { date:'', adsgram:0, monetag:0, adsterra:0 }
+  daily: { date:'', monetag:0, adsterra:0 }
 };
 
-// Limites journalières (doit correspondre au backend)
-const DAILY_LIMITS = { adsgram: 5, monetag: 9999, adsterra: 9999 };
-
-// Récompenses estimées en USDT (calculées avec taux)
-const TON_PER_VIEW = { adsgram: 0.001, monetag: 0.0007, adsterra: 0.0005 };
+const DAILY_LIMITS  = { monetag: 9999, adsterra: 9999 };
+const TON_PER_VIEW  = { monetag: 0.0007, adsterra: 0.0005 };
 
 function loadState() {
   try {
-    const s = localStorage.getItem('we2_' + USER_ID);
+    const s = localStorage.getItem('we3_' + USER_ID);
     if (s) state = { ...state, ...JSON.parse(s) };
   } catch(e) {}
-  // Réinitialiser si nouveau jour
   const today = new Date().toISOString().split('T')[0];
   if (state.daily.date !== today) {
-    state.daily = { date: today, adsgram: 0, monetag: 0, adsterra: 0 };
+    state.daily = { date: today, monetag: 0, adsterra: 0 };
   }
 }
 function saveState() {
-  try { localStorage.setItem('we2_' + USER_ID, JSON.stringify(state)); } catch(e) {}
+  try { localStorage.setItem('we3_' + USER_ID, JSON.stringify(state)); } catch(e) {}
 }
 
 // ============================================================
-// RÉCUPÉRER LE TAUX TON/USDT (depuis le backend)
+// TAUX TON/USDT
 // ============================================================
 async function fetchTonRate() {
   try {
@@ -466,7 +415,6 @@ async function fetchTonRate() {
     const data = await res.json();
     state.ton_rate = data.ton_usdt || 3.5;
   } catch(e) {
-    // Fallback : utiliser CoinGecko directement
     try {
       const res  = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=the-open-network&vs_currencies=usd');
       const data = await res.json();
@@ -477,39 +425,32 @@ async function fetchTonRate() {
   updateRewardLabels();
 }
 
-// ============================================================
-// MISE À JOUR DES RÉCOMPENSES EN USDT
-// ============================================================
 function updateRewardLabels() {
-  for (const net of ['adsgram', 'monetag', 'adsterra']) {
+  for (const net of ['monetag', 'adsterra']) {
     const usdt = (TON_PER_VIEW[net] * state.ton_rate * 0.5).toFixed(4);
     document.getElementById(`reward-${net}`).textContent = `≈ ${usdt} USDT / vue`;
   }
 }
 
 // ============================================================
-// MODIFICATION 4 — SÉLECTIONNER UN RÉSEAU ET AFFICHER PLAYER
+// SÉLECTIONNER UN RÉSEAU
 // ============================================================
 function selectAndPlay(network) {
-  // Vérifier si limite atteinte
   const done  = state.daily[network] || 0;
   const limit = DAILY_LIMITS[network];
   if (done >= limit) {
-    showToast(`🚫 Limite Adsgram atteinte (${limit}/jour). Essaie Monetag ou AdsTerra !`, 'error');
+    showToast(`🚫 Limite atteinte pour ${network}`, 'error');
     return;
   }
 
   state.selectedNet = network;
 
-  // Mettre en évidence la carte sélectionnée
   document.querySelectorAll('.network-card').forEach(c => c.classList.remove('selected'));
   document.getElementById(`card-${network}`).classList.add('selected');
 
-  // Afficher le player avec les couleurs du réseau
   const player = document.getElementById('player-section');
   player.classList.add('visible');
 
-  // Adapter le player au réseau choisi
   const btn      = document.getElementById('play-btn');
   const badge    = document.getElementById('reward-badge');
   const progFill = document.getElementById('vprogress-fill');
@@ -517,8 +458,7 @@ function selectAndPlay(network) {
   const simCount = document.getElementById('ad-countdown');
   const watchBtn = document.getElementById('btn-watch');
 
-  // Retirer toutes les classes de couleur
-  ['adsgram','monetag','adsterra'].forEach(n => {
+  ['monetag','adsterra'].forEach(n => {
     btn.classList.remove(n);
     badge.classList.remove(n);
     progFill.classList.remove(n);
@@ -527,7 +467,6 @@ function selectAndPlay(network) {
     watchBtn.classList.remove(n);
   });
 
-  // Appliquer les couleurs du réseau sélectionné
   btn.classList.add(network);
   badge.classList.add(network);
   progFill.classList.add(network);
@@ -536,16 +475,14 @@ function selectAndPlay(network) {
   watchBtn.classList.add(network);
   watchBtn.classList.add('visible');
 
-  // Calculer récompense USDT
   const usdtReward = (TON_PER_VIEW[network] * state.ton_rate * 0.5).toFixed(4);
   badge.textContent = `+${usdtReward} USDT`;
 
-  const names = { adsgram: 'Adsgram', monetag: 'Monetag', adsterra: 'AdsTerra' };
+  const names = { monetag: 'Monetag', adsterra: 'AdsTerra' };
   document.getElementById('idle-title').textContent = `${names[network]} sélectionné`;
   document.getElementById('idle-sub').textContent   = `Clique ▶ pour gagner ${usdtReward} USDT`;
   watchBtn.textContent = `▶ Regarder pub ${names[network]} — +${usdtReward} USDT`;
 
-  // Scroll vers le player
   player.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
@@ -560,61 +497,62 @@ async function startWatching() {
   const net = state.selectedNet;
   state.isWatching = true;
 
-  document.getElementById('player-idle').style.display   = 'none';
+  document.getElementById('player-idle').style.display    = 'none';
   document.getElementById('player-playing').style.display = 'block';
-  document.getElementById('reward-badge').style.display  = 'block';
-  document.getElementById('btn-watch').disabled          = true;
-  document.getElementById('ad-label').textContent        = CONFIG[net].label;
+  document.getElementById('reward-badge').style.display   = 'block';
+  document.getElementById('btn-watch').disabled           = true;
+  document.getElementById('ad-label').textContent         = CONFIG[net].label;
 
-  if (net === 'adsgram') {
-    await runAdsgram();
-  } else if (net === 'monetag') {
+  if (net === 'monetag') {
     await runMonetag();
   } else if (net === 'adsterra') {
     await runAdsterra();
   }
 }
 
-async function runAdsgram() {
-  try {
-    if (typeof Adsgram !== 'undefined' && CONFIG.adsgram.blockId !== 'YOUR_ADSGRAM_BLOCK_ID') {
-      const ctrl = Adsgram.init({ blockId: CONFIG.adsgram.blockId });
-      ctrl.show().then(() => onAdDone()).catch(() => onAdFailed());
-    } else {
-      await simulate(30);
-      onAdDone();
-    }
-  } catch(e) { await simulate(30); onAdDone(); }
-}
-
+// ============================================================
+// MONETAG — Rewarded Popup (Pub récompensée)
+// ============================================================
 async function runMonetag() {
   try {
-    if (typeof monetag !== 'undefined' && CONFIG.monetag.zoneId !== 'YOUR_MONETAG_ZONE_ID') {
-      monetag.show(CONFIG.monetag.zoneId, {
-        onComplete: () => onAdDone(),
-        onError:    () => onAdFailed()
+    if (typeof show_10890846 !== 'undefined') {
+      // Lancer la pub Monetag Rewarded Popup
+      show_10890846('pop').then(() => {
+        // L'utilisateur a regardé la pub jusqu'à la fin → on crédite
+        onAdDone();
+      }).catch(() => {
+        // Erreur ou pub fermée trop tôt
+        onAdFailed();
       });
     } else {
+      // SDK Monetag pas encore chargé → simulation
       await simulate(30);
       onAdDone();
     }
-  } catch(e) { await simulate(30); onAdDone(); }
-}
-
-async function runAdsterra() {
-  try {
-    if (CONFIG.adsterra.key !== 'YOUR_ADSTERRA_KEY') {
-      document.getElementById('adsgram-container').innerHTML =
-        `<iframe src="//www.highperformanceformat.com/${CONFIG.adsterra.key}/invoke.js"
-           width="100%" height="200" frameborder="0" scrolling="no"></iframe>`;
-    }
+  } catch(e) {
     await simulate(30);
     onAdDone();
-  } catch(e) { await simulate(30); onAdDone(); }
+  }
 }
 
 // ============================================================
-// SIMULATEUR
+// ADSTERRA — Smartlink (ouverture du lien dans nouvel onglet)
+// ============================================================
+async function runAdsterra() {
+  try {
+    // Ouvrir le Smartlink AdsTerra dans un nouvel onglet
+    window.open(CONFIG.adsterra.smartlink, '_blank');
+    // Simuler le temps de visionnage (30 secondes)
+    await simulate(30);
+    onAdDone();
+  } catch(e) {
+    await simulate(30);
+    onAdDone();
+  }
+}
+
+// ============================================================
+// SIMULATEUR (compte à rebours visuel)
 // ============================================================
 function simulate(duration) {
   return new Promise(resolve => {
@@ -635,12 +573,11 @@ function simulate(duration) {
 }
 
 // ============================================================
-// PUB TERMINÉE
+// PUB TERMINÉE → CRÉDITER L'UTILISATEUR
 // ============================================================
 async function onAdDone() {
   const net = state.selectedNet;
 
-  // Appeler le backend — il fait la conversion TON→USDT
   const result = await callBackend('ad_watched', {
     user_id:   USER_ID,
     network:   net,
@@ -648,13 +585,13 @@ async function onAdDone() {
   });
 
   let usdtEarned = 0;
-  let newRate     = state.ton_rate;
+  let newRate    = state.ton_rate;
 
   if (result && result.success) {
     usdtEarned         = result.usdt_earned || 0;
-    newRate             = result.ton_rate   || state.ton_rate;
-    state.pending_usdt  = result.pending_usdt || (state.pending_usdt + usdtEarned);
-    state.ton_rate      = newRate;
+    newRate            = result.ton_rate    || state.ton_rate;
+    state.pending_usdt = result.pending_usdt || (state.pending_usdt + usdtEarned);
+    state.ton_rate     = newRate;
     document.getElementById('ton-rate').textContent = newRate.toFixed(2);
   } else {
     // Mode offline : calcul local
@@ -662,17 +599,15 @@ async function onAdDone() {
     state.pending_usdt += usdtEarned;
   }
 
-  // Mettre à jour compteur journalier
   state.daily[net] = (state.daily[net] || 0) + 1;
   state.watched++;
 
-  // Ajouter à l'historique
-  const names = { adsgram: 'Adsgram', monetag: 'Monetag', adsterra: 'AdsTerra' };
+  const names = { monetag: 'Monetag', adsterra: 'AdsTerra' };
   state.history.unshift({
-    net:    names[net],
-    usdt:   usdtEarned,
-    rate:   state.ton_rate,
-    time:   new Date().toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' })
+    net:  names[net],
+    usdt: usdtEarned,
+    rate: state.ton_rate,
+    time: new Date().toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' })
   });
 
   saveState();
@@ -693,14 +628,14 @@ function onAdFailed() {
 // ============================================================
 function resetPlayer() {
   state.isWatching = false;
-  document.getElementById('player-idle').style.display   = 'flex';
+  document.getElementById('player-idle').style.display    = 'flex';
   document.getElementById('player-playing').style.display = 'none';
-  document.getElementById('ad-sim').style.display        = 'none';
-  document.getElementById('reward-badge').style.display  = 'none';
-  document.getElementById('vprogress-fill').style.width  = '0%';
-  document.getElementById('timer-lbl').textContent       = '';
-  document.getElementById('ad-label').textContent        = 'Prêt';
-  document.getElementById('adsgram-container').innerHTML = '';
+  document.getElementById('ad-sim').style.display         = 'none';
+  document.getElementById('reward-badge').style.display   = 'none';
+  document.getElementById('vprogress-fill').style.width   = '0%';
+  document.getElementById('timer-lbl').textContent        = '';
+  document.getElementById('ad-label').textContent         = 'Prêt';
+  document.getElementById('ad-container').innerHTML       = '';
 }
 
 // ============================================================
@@ -711,17 +646,17 @@ function startCooldown(sec) {
   const btn = document.getElementById('btn-watch');
   const net = state.selectedNet;
   const usdtReward = (TON_PER_VIEW[net] * state.ton_rate * 0.5).toFixed(4);
-  const names = { adsgram: 'Adsgram', monetag: 'Monetag', adsterra: 'AdsTerra' };
+  const names = { monetag: 'Monetag', adsterra: 'AdsTerra' };
   const iv = setInterval(() => {
     state.cooldown--;
     if (state.cooldown <= 0) {
       clearInterval(iv);
-      state.cooldown    = 0;
-      btn.disabled      = false;
-      btn.textContent   = `▶ Regarder pub ${names[net]} — +${usdtReward} USDT`;
+      state.cooldown  = 0;
+      btn.disabled    = false;
+      btn.textContent = `▶ Regarder pub ${names[net]} — +${usdtReward} USDT`;
     } else {
-      btn.disabled      = true;
-      btn.textContent   = `⏳ Prochaine pub dans ${state.cooldown}s`;
+      btn.disabled    = true;
+      btn.textContent = `⏳ Prochaine pub dans ${state.cooldown}s`;
     }
   }, 1000);
 }
@@ -730,24 +665,21 @@ function startCooldown(sec) {
 // MISE À JOUR UI
 // ============================================================
 function updateUI() {
-  const total = state.pending_usdt + state.balance_usdt;
-  document.getElementById('header-balance').textContent  = state.pending_usdt.toFixed(4);
-  document.getElementById('stat-watched').textContent    = state.watched;
-  document.getElementById('stat-earned').textContent     = state.balance_usdt.toFixed(4);
-  document.getElementById('stat-pending').textContent    = state.pending_usdt.toFixed(4);
-  document.getElementById('claim-amount').textContent    = state.pending_usdt.toFixed(4);
+  document.getElementById('header-balance').textContent = state.pending_usdt.toFixed(4);
+  document.getElementById('stat-watched').textContent   = state.watched;
+  document.getElementById('stat-earned').textContent    = state.balance_usdt.toFixed(4);
+  document.getElementById('stat-pending').textContent   = state.pending_usdt.toFixed(4);
+  document.getElementById('claim-amount').textContent   = state.pending_usdt.toFixed(4);
 
-  // Bouton retrait
   if (state.pending_usdt > 0) document.getElementById('btn-claim').classList.add('visible');
   else document.getElementById('btn-claim').classList.remove('visible');
 
-  // Cartes réseau — barre de progression + badges
   updateNetworkCards();
   renderHistory();
 }
 
 function updateNetworkCards() {
-  for (const net of ['adsgram', 'monetag', 'adsterra']) {
+  for (const net of ['monetag', 'adsterra']) {
     const done  = state.daily[net] || 0;
     const limit = DAILY_LIMITS[net];
     const pct   = limit >= 9999 ? Math.min((done / 20) * 100, 95) : (done / limit) * 100;
@@ -807,7 +739,7 @@ function renderHistory() {
 }
 
 // ============================================================
-// MODAL RETRAIT USDT
+// MODAL RETRAIT
 // ============================================================
 function openModal() {
   if (state.pending_usdt < 0.001) { showToast('⚠️ Solde trop faible', 'error'); return; }
@@ -902,12 +834,28 @@ function showToast(msg, type = '') {
 // INIT
 // ============================================================
 loadState();
-fetchTonRate();      // Récupère le taux TON/USDT au démarrage
+fetchTonRate();
 updateUI();
 
-// Rafraîchir le taux toutes les 5 minutes
+// Rafraîchir taux toutes les 5 minutes
 setInterval(fetchTonRate, 300000);
+
+// Monetag In-App Interstitial (pub automatique au démarrage)
+setTimeout(() => {
+  if (typeof show_10890846 !== 'undefined') {
+    show_10890846({
+      type: 'inApp',
+      inAppSettings: {
+        frequency: 2,
+        capping: 0.1,
+        interval: 30,
+        timeout: 5,
+        everyPage: false
+      }
+    });
+  }
+}, 2000); // délai 2 secondes après chargement
+
 </script>
 </body>
 </html>
-
